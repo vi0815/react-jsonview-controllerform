@@ -20,7 +20,8 @@ export default function DemoJsonViewer() {
 
 
 
-  const { handleSubmit, reset, setValue, control } = useForm({ defaultValues });
+  const { handleSubmit, reset, setValue, control } = useForm({ defaultValues,
+  mode: "onSubmit" });
   const [data, setData] = React.useState(null)
 
 
@@ -29,6 +30,10 @@ export default function DemoJsonViewer() {
     <Controller
       name="venueAddress"
       control={control}
+      rules={{
+        validate: (e) => {false}
+        }
+      }
       render={({ field }) => (
         <JsonViewer
           title={'Venue Address'}
